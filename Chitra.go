@@ -1,7 +1,7 @@
 package main
 
 import (
-	"chitra/net"
+	"gitlab.com/archit-p/chitra/net"
 )
 
 func main() {

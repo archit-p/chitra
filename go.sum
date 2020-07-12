@@ -1,2 +1,4 @@
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+gitlab.com/archit-p/chitra v0.0.0-20200712110600-617a00449238 h1:ivDLbUyQdkrpV0rU5r6aFgI4PKZD5sgMtGabgc4o/lk=
+gitlab.com/archit-p/chitra v0.0.0-20200712110600-617a00449238/go.mod h1:zyY6WG6enSBwRAC4q4TGPxrxLRjt+YaUQPHFuJwYsZg=

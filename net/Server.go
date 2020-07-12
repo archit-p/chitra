@@ -15,7 +15,7 @@ func StartAPIServer() {
 func StartUIServer() {
 	r := mux.NewRouter()
 
-	buildHandler := http.FileServer(http.Dir("ui/build"))
+	buildHandler := http.FileServer(http.Dir("chitra-client/build"))
 	r.PathPrefix("/").Handler(buildHandler)
 
 	http.ListenAndServe(":5000", r)

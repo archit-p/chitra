@@ -1,0 +1,3 @@
+[submodule "chitra-client"]
+	path = chitra-client
+	url = https://gitlab.com/archit-p/chitra-client
