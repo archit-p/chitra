@@ -6,17 +6,20 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func StartAPIServer() {
+var ServerDir string
+
+func StartAPIServer(dir string, port string) {
+	ServerDir = dir
 	router := NewRouter()
 
-	http.ListenAndServe(":8080", router)
+	http.ListenAndServe(":" + port, router)
 }
 
-func StartUIServer() {
+func StartUIServer(dir string, port string) {
 	r := mux.NewRouter()
 
-	buildHandler := http.FileServer(http.Dir("chitra-client/build"))
+	buildHandler := http.FileServer(http.Dir(dir))
 	r.PathPrefix("/").Handler(buildHandler)
 
-	http.ListenAndServe(":5000", r)
+	http.ListenAndServe(":" + port, r)
 }

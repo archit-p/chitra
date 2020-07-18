@@ -2,7 +2,6 @@ package repo
 
 import (
 	"crypto/md5"
-	"log"
 	"encoding/hex"
 	"fmt"
 	"os"
@@ -35,12 +34,15 @@ func getHashString(word string) string {
 	return hashString[:10]
 }
 
-func GetMovieList(root string) []VideoFile {
+func GetMovieList(root string) ([]VideoFile, error) {
 	var movies []VideoFile
 
 	VideoDict = make(map[string]VideoFile)
 
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if info.IsDir() || !valid(filepath.Ext(path)) {
 			return nil
 		}
@@ -56,20 +58,20 @@ func GetMovieList(root string) []VideoFile {
 	})
 
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	return movies
+	return movies, nil
 }
 
-func GetMovieDetails(key string) VideoFile {
+func GetMovieDetails(key string) (*VideoFile, error) {
 	m, ok := VideoDict[key]
 
 	if !ok {
-		log.Println("Movie not found in database")
+		return nil, fmt.Errorf("filesys: %s not found in store", key)
 	}
 
-	return m
+	return &m, nil
 }
 
 func GetMoviePath(key string) (string, error) {
